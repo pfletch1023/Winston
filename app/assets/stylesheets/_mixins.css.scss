@@ -1,0 +1,38 @@
+//Fonts
+@font-face { font-family: Gotham-Bold; src: url('/assets/Gotham-Bold.otf'); } 
+@font-face { font-family: Gotham-Book; src: url('/assets/Gotham-Book.otf'); } 
+@font-face { font-family: Gotham-Light; src: url('/assets/Gotham-Light.otf'); } 
+@font-face { font-family: Gotham-XLight; src: url('/assets/Gotham-XLight.otf'); } 
+
+@mixin G-Bold {
+  font-family: Gotham-Bold, Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: bolder;
+}
+
+@mixin G-Regular {
+  font-family: Gotham-Book, Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: normal;
+}
+
+@mixin G-Light {
+  font-family: Gotham-Light, Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: lighter;
+}
+
+@mixin G-XLight {
+  font-family: Gotham-XLight, Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: normal;
+}
+
+@mixin transition($x) {  transition: #{$x};
+  -moz-transition: #{$x};
+  -webkit-transition: #{$x};
+  -o-transition: #{$x};
+}
+
+@mixin calc($attribute, $x) {
+  #{$attribute}: -moz-calc(#{$x});
+  #{$attribute}: -webkit-calc(#{$x});
+  #{$attribute}: -o-calc(#{$x});
+  #{$attribute}: calc(#{$x});
+}

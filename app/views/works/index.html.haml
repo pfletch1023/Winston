@@ -1,0 +1,5 @@
+:javascript
+  $(function() {
+    window.router = new Winston.Routers.Router({ works: #{@works.to_json.html_safe} });
+    Backbone.history.start();
+  });

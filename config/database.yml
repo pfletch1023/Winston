@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: winston_development
+  pool: 5
+  username: winston
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: winston_test
+  pool: 5
+  username: winston
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: winston_production
+  pool: 5
+  username: winston
+  password:
