@@ -1,8 +1,8 @@
-<div class="header">
-  <!-- <a href="#"> -->
-  <div class="header-container"><h1 class="out">Winston Duke</h1></div>
-  <div class="background-container"></div>
-  <!-- </a> -->
+<!-- Header -->
+<div class="header <%= state == 'closed' ? state: '' %>">
+  <div class="background-container" style="background-image: url('<%= image %>')"></div>
+  <h1>Winston Duke</h1>
+  <!-- Navigation Bar -->
   <div class="nav">
     <a href="#" data-param="home" class="nav-link">Home</a>
     <a href="#about" data-param="about" class="nav-link">About</a>
@@ -12,5 +12,6 @@
     <a href="#press" data-param="press" class="nav-link">Press</a>
     <a href="#contact" data-param="contact" class="nav-link">Contact</a>
   </div>
-</a>
-<div class="static"></div>
+</div>
+<!-- Pages -->
+<div class="container"></div>

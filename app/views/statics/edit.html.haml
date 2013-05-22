@@ -1,0 +1,12 @@
+=link_to "Back to Admin Panel", "/admin"
+=form_for @static do |f|
+  %table
+    %tr
+      %td Paralink
+      %td=f.text_field :paralink
+    %tr
+      %td Content
+      %td=f.text_area :content
+    %td
+      %td
+      %td=f.submit

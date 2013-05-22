@@ -1,0 +1,42 @@
+=link_to "Back to Site", "/"
+%h2 Admin Panel
+%h5 All Works
+%table
+  %tr
+    %th Name
+    %th Type
+    %th Description
+    %th Role
+    %th
+  - @works.each do |work|
+    %tr
+      %td= work.name
+      %td= work.type.name
+      %td= work.description
+      %td= work.role
+      %td= link_to "Edit", "/works/#{work.id}/edit"
+%h5 All Types
+%table
+  %tr
+    %th Name
+    %th Works
+    %th Description
+    %th
+  - @types.each do |type|
+    %tr
+      %td= type.name
+      %td= type.works.count
+      %td= type.description
+      %td= link_to "Edit", "/types/#{type.id}/edit"
+%h5 All Static Pages
+%table
+  %tr
+    %th Paralink
+    %th Content
+    %th
+  - @statics.each do |static|
+    %tr
+      %td= static.paralink
+      %td= static.content
+      %td= link_to "Edit", "/statics/#{static.id}/edit"
+      

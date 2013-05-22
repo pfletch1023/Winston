@@ -1,82 +1,29 @@
 class Winston.Routers.Router extends Backbone.Router
   
   initialize: (options) ->
-    @works = new Winston.Collections.Works
-    @works.add(options.works.models)
-    @view = new Winston.Views.Index(@works)
-    @welcome = true
-  
-  toggleHeader: (state) ->
-    if state == "open"
-      $(".header").removeClass("closed")
-    else
-      $(".header").addClass("closed")
+    @works = new Winston.Collections.Works(options.works)
   
   routes:
-    ".*" : "index"
-    "about" : "about"
-    "resume" : "resume"
     "works" : "works"
     "gallery" : "gallery"
-    "press" : "press"
-    "contact" : "contact"
+    ":param" : "static"
+    ".*" : "index"
     
   index: ->
-    if @welcome
-      @view.fadedRender()
-    else
-      @view.render()
-      @toggleHeader("open")
-      @welcome = false
+    @view = new Winston.Views.Index(works: @works, state: "open") unless @view
+    @view.render(@welcome)
   
-  about: ->
-    @welcome = false
-    @toggleHeader("open")
-    if @aboutModel
-      @view.renderAbout(@aboutModel)
+  static: (param) ->
+    @view = new Winston.Views.Index(works: @works, state: "closed") unless @view
+    if @statics
+      @view.renderStatic(@statics, param)
     else
-      @aboutModel = new Winston.Models.Static
-      @aboutModel.url = "/statics/about"
-      @aboutModel.fetch success: (model) =>
-        @view.renderAbout(@aboutModel)
-  
-  resume: ->
-    @welcome = false
-    #@toggleHeader("closed")
-    if @resumeModel
-      @view.renderResume(@resumeModel)
-    else
-      @resumeModel = new Winston.Models.Static
-      @resumeModel.url = "/statics/resume"
-      @resumeModel.fetch success: (model) =>
-        @view.renderResume(@resumeModel)
+      @statics = new Winston.Collections.Statics
+      @statics.fetch success: (data) =>
+        @view.renderStatic(@statics, param)
   
   works: ->
-    @welcome = false
-    #@toggleHeader("closed")
+    @view = new Winston.Views.Index(works: @works, state: "closed") unless @view
   
   gallery: ->
-    @welcome = false
-    #@toggleHeader("closed")
-  
-  press: ->
-    @welcome = false
-    #@toggleHeader("closed")
-    if @pressModel
-      @view.renderStatic(@pressModel)
-    else
-      @pressModel = new Winston.Models.Static
-      @pressModel.url = "/statics/press"
-      @pressModel.fetch success: (model) =>
-        @view.renderStatic(@pressModel)
-  
-  contact: ->
-    @welcome = false
-    #@toggleHeader("closed")
-    if @contactModel
-      @view.renderStatic(@contactModel)
-    else
-      @contactModel = new Winston.Models.Static
-      @contactModel.url = "/statics/contact"
-      @contactModel.fetch success: (model) =>
-        @view.renderStatic(@contactModel)
+    @view = new Winston.Views.Index(works: @works, state: "closed") unless @view

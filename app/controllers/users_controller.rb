@@ -19,4 +19,10 @@ class UsersController < ApplicationController
     redirect_to "/"
   end
   
+  def admin
+    @works = Work.all
+    @statics = Static.all
+    @types = Type.all
+  end
+  
 end
