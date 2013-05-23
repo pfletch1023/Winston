@@ -2,15 +2,14 @@
   = render :partial => "header"
   .admin-container
     .top
-      %h1 Performances
-      = link_to "New Performance", "/works/new"
+      %h1 Videos
+      = link_to "New Video", "/works/new_video"
     %table
       %tr
         %th
         %th Name
-        %th Role
-        %th Program
         %th Director
+        %th URL
         %th Description
         %th
         %th
@@ -20,9 +19,8 @@
             - if work.image
               =image_tag work.image.url(:small)
           %td= work.name
-          %td= work.role
-          %td= work.program
           %td= work.director
+          %td= work.video_url
           %td= work.description
           %td= link_to "Edit", "/works/#{work.id}/edit"
-          %td= link_to "Delete", work, method: :delete, :confirm => "Are you sure?"    
+          %td= link_to "Delete", work, method: :delete, :confirm => "Are you sure?"

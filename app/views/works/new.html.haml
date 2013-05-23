@@ -1,0 +1,32 @@
+.admin
+  = render :partial => "/users/header"
+  .admin-container
+    .top
+      %h1 New Performance
+    =form_for @work do |f|
+      =f.hidden_field :type_id, :value => @type_id
+      %table
+        %tr
+          %td Name
+          %td=f.text_field :name
+        %tr
+          %td Role
+          %td=f.text_field :role
+        %tr
+          %td Program
+          %td=f.text_field :program
+        %tr
+          %td Director
+          %td=f.text_field :director
+        %tr
+          %td Date
+          %td= f.text_field :datetime
+        %tr
+          %td Description
+          %td=f.text_area :description
+        %tr
+          %td Image
+          %td=f.file_field :image
+        %tr
+          %td
+          %td= f.submit

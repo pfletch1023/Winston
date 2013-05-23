@@ -16,5 +16,12 @@ Winston::Application.routes.draw do
 
   # Admin Panel
   match "/admin" => "users#admin"
+  match "/admin/statics" => "users#admin_statics"
+  match "/admin/photos" => "users#admin_photos"
+  match "/admin/videos" => "users#admin_videos"
+  
+  # Types
+  match "/types/:name/works" => "types#works"
+  match "/gallery/works" => "types#gallery"
   
 end

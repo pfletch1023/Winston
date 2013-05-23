@@ -30,6 +30,12 @@
   -o-transition: #{$x};
 }
 
+@mixin shadow($x) {
+  -moz-box-shadow: $x;
+  -webkit-box-shadow: $x;
+  box-shadow: $x;
+}
+
 @mixin calc($attribute, $x) {
   #{$attribute}: -moz-calc(#{$x});
   #{$attribute}: -webkit-calc(#{$x});

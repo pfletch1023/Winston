@@ -6,7 +6,10 @@ class CreateWorks < ActiveRecord::Migration
       t.string :role
       t.datetime :datetime
       t.integer :type_id
-      t.has_attached_file :image
+      t.attachment :image
+      t.string :program
+      t.string :director
+      t.string :domain
     end
   end
 end

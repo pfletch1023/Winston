@@ -1,0 +1,15 @@
+.admin
+  = render :partial => "header"
+  .admin-container
+    .top
+      %h1 Static Pages
+    %table
+      %tr
+        %th Paralink
+        %th Content (HTML)
+        %th
+      - @statics.each do |static|
+        %tr
+          %td= static.paralink
+          %td= static.content
+          %td= link_to "Edit", "/statics/#{static.id}/edit"

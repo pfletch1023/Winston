@@ -9,7 +9,6 @@ class Winston.Views.Index extends Backbone.View
   
   initialize: (options) ->
     $(@el).html(@indexTemplate(image: "/assets/background/1.jpg", state: options.state))
-    @works = options.works
   
   toggleHeader: (state) ->
     if state == "open"
@@ -32,9 +31,16 @@ class Winston.Views.Index extends Backbone.View
     @resetLinks(param)
     @staticView = new Winston.Views.Static(collection, param)
   
-  # Resume
-  renderResume: (model) ->
-    @resetLinks("resume")
+  # /Works
+  renderWorks: (works) ->
+    @toggleHeader("closed")
+    @resetLinks("works")
+    @worksView = new Winston.Views.Works(works)
+  
+  # /Gallery
+  renderGallery: (works) ->
+    @toggleHeader("closed")
+    @resetLinks("gallery")
   
   # Home  
   render: ->

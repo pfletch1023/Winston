@@ -28,7 +28,7 @@ gem 'haml'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 
 #Paperclip
-gem "paperclip", "~> 3.0"
+gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 
 #Amazon S3
 gem 'aws-s3'

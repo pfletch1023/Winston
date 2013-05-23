@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130404025755) do
+ActiveRecord::Schema.define(:version => 20130523043352) do
 
   create_table "statics", :force => true do |t|
     t.string "paralink"
@@ -40,6 +40,10 @@ ActiveRecord::Schema.define(:version => 20130404025755) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "program"
+    t.string   "director"
+    t.string   "domain"
+    t.string   "video_url"
   end
 
 end
