@@ -2,9 +2,6 @@ Winston::Application.routes.draw do
   
   root :to => "works#index"
   
-  # Resources
-  resources :types, :works, :statics
-  
   # User Authentication
   match "/login" => "users#login"
   match "/authenticate" => "users#authenticate"
@@ -19,9 +16,14 @@ Winston::Application.routes.draw do
   match "/admin/statics" => "users#admin_statics"
   match "/admin/photos" => "users#admin_photos"
   match "/admin/videos" => "users#admin_videos"
+  match "/works/new_photo" => "works#new_photo"
+  match "/works/new_video" => "works#new_video"
   
   # Types
   match "/types/:name/works" => "types#works"
   match "/gallery/works" => "types#gallery"
+  
+  # Resources
+  resources :types, :works, :statics
   
 end

@@ -42,6 +42,18 @@ class WorksController < ApplicationController
     @type_id = @type_id.id if @type_id
   end
   
+  def new_photo
+    @work = Work.new
+    @type_id = Type.where(:name => "photo").first
+    @type_id = @type_id.id if @type_id
+  end
+  
+  def new_video
+    @work = Work.new
+    @type_id = Type.where(:name => "video").first
+    @type_id = @type_id.id if @type_id
+  end
+  
   def create
     @work = Work.new(params[:work])
     if @work.save

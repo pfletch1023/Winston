@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   end
   
   def admin
-    @works = Work.all
+    @works = Type.where(:name => "performance").first.works
   end
   
   def admin_photos

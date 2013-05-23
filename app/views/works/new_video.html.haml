@@ -2,7 +2,7 @@
   = render :partial => "/users/header"
   .admin-container
     .top
-      %h1 New Performance
+      %h1 New Video
     =form_for @work do |f|
       =f.hidden_field :type_id, :value => @type_id
       %table
@@ -10,20 +10,14 @@
           %td Name
           %td=f.text_field :name, :placeholder => "An Echo in the Bone"
         %tr
-          %td Role
-          %td=f.text_field :role, :placeholder => "Son-Son"
-        %tr
-          %td Program
-          %td=f.text_field :program, :placeholder => "Trinidad Theater Workshop"
-        %tr
           %td Director
           %td=f.text_field :director, :placeholder => "Timmia Hearn"
         %tr
+          %td Video URL
+          %td=f.text_field :video_url, :placeholder => "youtube.com"
+        %tr
           %td Description
           %td=f.text_area :description
-        %tr
-          %td Image
-          %td=f.file_field :image
         %tr
           %td
           %td= f.submit
