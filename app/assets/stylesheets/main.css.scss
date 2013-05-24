@@ -5,6 +5,7 @@
 $width: 960px;
 $header-height: 163px;
 $left-width: 480px;
+$min-width: 960px;
 
 // General Styles
 body {
@@ -25,16 +26,17 @@ a {
 
 // Header
 .header {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 10;
   background: white;
+  min-width: $min-width;
   h1 {
     @include G-Bold;
-    width: $width;
+    width: 100%;
     font-size: 110px;
     text-transform: uppercase;
     text-align: center;
@@ -45,10 +47,9 @@ a {
     z-index: -1;
     position: absolute;
     top: 40%;
-    left: 50%;
-    margin-left: -480px;
   }
   &.closed {
+    position: fixed;
     height: $header-height;
     h1 {
       font-size: 50px;
@@ -66,8 +67,8 @@ a {
 // Background
 .background-container {
   width: 100%;
-  min-width: $width;
-  opacity: 0.5;
+  min-width: 720px;
+  opacity: 0.7;
   height: 100%;
   background-size: 100%;
   background-position: center;
@@ -107,13 +108,13 @@ a {
 
 // Container
 .container {
-  position: absolute;
+  position: relative;
   top: 183px;
   width: $width;
-  left: 50%;
-  margin-left: -480px;
+  margin: auto;
   z-index: 0;
   padding-bottom: 50px;
+  min-width: $width;
   &.loading {
     height: 300px;
     background-position: center;
@@ -232,6 +233,70 @@ a {
   @include transition(0.2s);
   &:hover {
     @include shadow(0px 0px 5px 4px #eee);
+  }
+}
+
+// Gallery
+.gallery-works {
+  position: fixed;
+  overflow: scroll;
+  top: $header-height;
+  left: 50%;
+  margin-left: -480px;
+  width: $width;
+  @include calc(height, "100% - #{$header-height}");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  #selected {
+    height: 85%;
+    text-align: center;
+    img {
+      padding: 10px;
+      @include calc(height, "100% - 20px");
+      @include transition(opacity 0.5s);
+      cursor: pointer;
+    }
+  }
+  #slideshow {
+    position: relative;
+    height: 10%;
+    display: block;
+    text-align: center;
+  }
+  .image {
+    height: 100%;
+    cursor: pointer;
+    @include transition(opacity 0.2s);
+    &:hover {
+      opacity: 0.7;
+    }
+    &.active {
+      border-bottom: 3px solid black;
+      margin-bottom: -3px;
+    }
+  }
+}
+
+// Expanded Image
+#expanded-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 999;
+  display: none;
+  text-align: center;
+  &.open {
+    display: block;
+  }
+  img {
+    margin-top: 20px;
+    border: 1px solid #dadada;
+    @include calc(height, "100% - 40px");
+    @include shadow(0px 0px 5px 3px #eee);
   }
 }
 
