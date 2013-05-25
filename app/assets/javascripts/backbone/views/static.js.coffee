@@ -22,6 +22,9 @@ class Winston.Views.Static extends Backbone.View
       return @contactTemplate(collection: collection, param: param)
   
   initialize: (collection, param) =>
+    @reset(collection, param)
+  
+  reset: (collection, param) ->
     $(@el).html("").addClass "loading"
     _.delay(@render, 500, collection, param)
     

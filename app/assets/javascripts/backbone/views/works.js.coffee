@@ -10,6 +10,9 @@ class Winston.Views.Works extends Backbone.View
   
   initialize: (collection) =>
     @collection = collection
+    @reset()
+  
+  reset: ->
     $(@el).html("").addClass "loading"
     _.delay(@render, 500)
   

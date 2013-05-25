@@ -26,17 +26,22 @@ class Winston.Views.Index extends Backbone.View
     $(".nav a[data-param='#{param}']").addClass("active")
 
   # Statics (About, Resume, Press, Contact)
-  renderStatic: (collection, param) ->
+  renderStatic: (param) ->
     @toggleHeader("closed")
     @resetLinks(param)
-    @staticView = new Winston.Views.Static(collection, param)
+    if @statics && @staticView
+      @staticView.reset(@statics, param)
+    else
+      @statics = new Winston.Collections.Statics
+      @statics.fetch success: (data) =>
+        @staticView = new Winston.Views.Static(@statics, param)
   
   # /Works
   renderWorks: (works) ->
     @toggleHeader("closed")
     @resetLinks("works")
-    if @worksCollection
-      @worksView = new Winston.Views.Works(@worksCollection)
+    if @worksCollection && @worksView
+      @worksView.reset()
     else
       @worksCollection = new Winston.Collections.Works
       @worksCollection.url = "/types/performance/works"
@@ -47,8 +52,8 @@ class Winston.Views.Index extends Backbone.View
   renderGallery: (works) ->
     @toggleHeader("closed")
     @resetLinks("gallery")
-    if @galleryCollection
-      @galleryView = new Winston.Views.Gallery(@galleryCollection)
+    if @galleryCollection && @galleryView
+      @galleryView.reset()
     else
       @galleryCollection = new Winston.Collections.Works
       @galleryCollection.url = "/gallery/works"
@@ -59,9 +64,3 @@ class Winston.Views.Index extends Backbone.View
   render: ->
     @toggleHeader("open")
     @resetLinks("home")
-  
-  events: 
-    "click #expanded-image" : "closeImage"
-  
-  closeImage: (event) ->
-    $("#expanded-image").html("").removeClass "open"
