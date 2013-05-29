@@ -23,6 +23,8 @@ Winston::Application.routes.draw do
   match "/types/:name/works" => "types#works"
   match "/gallery/works" => "types#gallery"
   
+  match "/search/:text" => "works#search"
+  
   # Resources
   resources :types, :works, :statics
   

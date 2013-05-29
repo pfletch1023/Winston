@@ -33,3 +33,6 @@ gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 #Amazon S3
 gem 'aws-s3'
 gem 'aws-sdk'
+
+#Search
+gem "pg_search"

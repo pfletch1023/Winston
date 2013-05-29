@@ -24,6 +24,14 @@ a {
   @include transition(0.4s);
 }
 
+// Loading
+.loading {
+  background-position: center;
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-image: url("/assets/loading.gif");
+}
+
 // z-index
 .works {
   z-index: 0;
@@ -125,10 +133,7 @@ a {
   min-width: $width;
   &.loading {
     height: 300px;
-    background-position: center;
     background-size: 80px;
-    background-repeat: no-repeat;
-    background-image: url("/assets/loading.gif");
   }
 }
 
@@ -185,6 +190,24 @@ a {
   .skills {
     line-height: 25px;
   }
+  .link-container {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding-top: 40px;
+    width: 100%;
+    text-align: center;
+    border-top: 1px dotted black;
+  }
+  .resume-link {
+    padding: 10px;
+    border: 1px solid black;
+    color: black;
+    @include transition(0.2s);
+    &:hover {
+      background: black;
+      color: white;
+    }
+  }
 }
 
 // Press
@@ -227,12 +250,71 @@ a {
 }
 
 // Works
+
+.filter {
+  width: 180px;
+  min-height: 200px;
+  float: left;
+  margin-top: 27px;
+  position: fixed;
+  top: $header-height;
+  h5 {
+    margin: 0;
+    @include G-Light;
+    border-bottom: 1px dotted black;
+    padding-bottom: 5px;
+    font-size: 18px;
+  }
+  form {
+    margin: 10px 0;
+    input {
+      width: 135px;
+      margin: 0;
+      padding: 8px 5px;
+      border: 1px solid black;
+      float: left;
+      display: block;
+      font-size: 14px;
+      outline: none;
+      @include G-Regular;
+    }
+    input[type='submit'] {
+      width: 30px;
+      background-color: white;
+      margin-left: 3px;
+      cursor: pointer;
+      &:hover {
+        background: black;
+        color: white;
+      }
+    }
+  }
+  #clear {
+    display: none;
+    background: #dadada;
+    border: none;
+    color: black;
+    cursor: pointer;
+    font-size: 10px;
+    padding: 5px 10px;
+    margin: 10px 0;
+    @include G-Regular;
+    @include transition(0.2s);
+    &:hover {
+      background: black;
+      color: white;
+    }
+  }
+}
+.works {
+  margin-left: 200px;
+}
 .column {
   float: left;
 }
 .work {
-  width: 225px;
-  margin: 5.5px;
+  width: 176px;
+  margin: 5px;
   padding: 2px;
   img {
     width: 100%;
@@ -241,6 +323,13 @@ a {
   @include transition(0.2s);
   &:hover {
     @include shadow(0px 0px 5px 4px #eee);
+  }
+  &.disabled {
+    opacity: 0.4;
+    cursor: default;
+    &:hover {
+      @include shadow(0px 0px 0px 0px #eee);
+    }
   }
 }
 

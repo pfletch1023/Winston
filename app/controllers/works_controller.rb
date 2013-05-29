@@ -69,4 +69,9 @@ class WorksController < ApplicationController
     redirect_to "/admin"
   end
   
+  def search
+    @works = Work.search(params[:text])
+    render json: @works.as_json
+  end
+  
 end

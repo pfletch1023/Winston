@@ -7,6 +7,16 @@ class Work < ActiveRecord::Base
   
   belongs_to :type
   
+  include PgSearch
+  pg_search_scope :search, 
+    :against => {
+      :name => "A", 
+      :role => "B", 
+      :program => "C", 
+      :director => "D"
+    }, 
+    :using => {:tsearch => {:prefix => true}}
+  
   has_attached_file :image, 
     :styles => { 
       :medium => ["400x", :jpg], 
